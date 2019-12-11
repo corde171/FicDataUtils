@@ -18,11 +18,10 @@ public class TagsToVec {
         Stream<Path> pathStream;
         try {
             pathStream = Files.walk(Paths.get(tagsToVec.basePath));
+            pathStream.forEach(tagsToVec.new VecConsumer());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public class VecConsumer implements Consumer<Path> {
@@ -30,7 +29,7 @@ public class TagsToVec {
         public void accept(Path path) {
             if(!Files.isDirectory(path)) {
                 try {
-                    TagsToVec.this.writeVec(path);
+                    writeVec(path);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -73,7 +72,7 @@ public class TagsToVec {
             toWrite = toWrite.concat(vec[i] + ",");
         }
         toWrite = toWrite.substring(0,toWrite.length()-1);
-
+        Files.write(path, ("Number of Tags for Vector: " + this.masterTagList.size()).getBytes(StandardCharsets.ISO_8859_1),StandardOpenOption.APPEND,StandardOpenOption.WRITE);
         Files.write(path, toWrite.getBytes(StandardCharsets.ISO_8859_1), StandardOpenOption.APPEND,StandardOpenOption.WRITE);
     }
 }
