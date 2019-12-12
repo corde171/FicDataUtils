@@ -14,8 +14,8 @@ public class TagsToVec {
     private Map<String, Integer> masterMap;
 
     public static void main(String[] args) {
-        TagsToVec tagsToVec = new TagsToVec("c:/Users/Odium Dei/Desktop/FlatFicOutput - Copy",
-                "c:/Users/Odium Dei/Desktop/IntermediateFicData/taglist20.txt");
+        TagsToVec tagsToVec = new TagsToVec("PATH GOES HERE/FlatFicOutput - Copy",
+                "PATH GOES HERE/taglist[tagCutoff].txt");
         Stream<Path> pathStream;
         try {
             pathStream = Files.walk(Paths.get(tagsToVec.basePath));
@@ -29,8 +29,6 @@ public class TagsToVec {
         @Override
         public void accept(Path path) {
             if((!Files.isDirectory(path) || path.toString().equals(TagsToVec.this.basePath)) &&path.toString().contains("_tags.txt")) {
-                System.out.println("Consuming: " + path.toString());
-
                 try {
                     writeVec(path);
                 } catch (IOException e) {
