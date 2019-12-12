@@ -26,10 +26,10 @@ public class FileSplitter {
     }
 
     public static void main(String[] args) {
-        FileSplitter splitter = new FileSplitter("c:/Users/Odium Dei/Desktop/IntermediateFicData/taglist20.txt",
-                "c:/Users/Odium Dei/Desktop/FlatFicOutput/");
+        FileSplitter splitter = new FileSplitter("PATH GOES HERE",
+                "PATH GOES HERE");
         try {
-            splitter.splitAllFiles("c:/Users/Odium Dei/Desktop/FlatFicData/");
+            splitter.splitAllFiles("PATH GOES HERE");
         } catch (IOException e) {
             e.printStackTrace();
         }
