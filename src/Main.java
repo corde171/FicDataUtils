@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class Main {
     private MasterTagList list;
-    private static String rootpath = "c:/Users/Odium Dei/Desktop/IntermediateFicData/";
+    private static String rootpath = "PATH GOES HERE";
     public static void main(String[] args) {
         Main main = new Main();
         try {
